@@ -1,1 +1,12 @@
+4) Reducción no lineal con Isomap
+Pregunta
 
+Un sistema de monitoreo urbano registra múltiples variables numéricas de movilidad en un DataFrame, como flujo vehicular, velocidad media, tiempo de espera y ocupación vial. Se quiere representar estas observaciones en menos dimensiones conservando relaciones no lineales entre ellas.
+
+Escribe una función llamada reducir_movilidad_con_isomap(df, n_componentes, n_neighbors) que:
+
+use únicamente las columnas numéricas del DataFrame,
+aplique Isomap de sklearn.manifold con:
+n_components=n_componentes
+n_neighbors=n_neighbors
+devuelva únicamente un np.ndarray con la representación reducida.
