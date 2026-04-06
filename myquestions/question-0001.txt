@@ -1,1 +1,15 @@
+1) Clustering espectral de clientes
+Pregunta
 
+Una empresa de streaming tiene un DataFrame donde cada fila representa un usuario y cada columna numérica describe su comportamiento de uso, como horas de reproducción, número de géneros consumidos, sesiones por semana y tiempo promedio por sesión.
+
+Escribe una función llamada agrupar_clientes_espectralmente(df, n_clusters) que:
+
+use únicamente las columnas numéricas del DataFrame,
+escale las variables,
+aplique SpectralClustering de sklearn con:
+n_clusters=n_clusters
+affinity="nearest_neighbors"
+assign_labels="kmeans"
+random_state=42
+devuelva únicamente un np.ndarray con la etiqueta de clúster asignada a cada fila.
