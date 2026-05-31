@@ -1,1 +1,41 @@
++- answer-0410.py
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import IsolationForest
 
+def detectar_anomalias_red(df):
+
+    df_resultado = df.copy()
+
+    cols = [
+        'duracion',
+        'bytes_enviados',
+        'bytes_recibidos',
+        'num_conexiones',
+        'puerto_destino'
+    ]
+
+    X = df_resultado[cols]
+
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+
+    modelo = IsolationForest(
+        random_state=42,
+        contamination='auto'
+    )
+
+    predicciones = modelo.fit_predict(X_scaled)
+
+    df_resultado['anomalia'] = predicciones == -1
+
+    porcentaje_anomalias = (
+        df_resultado['anomalia'].mean() * 100
+    )
+
+    return {
+        'df_resultado': df_resultado,
+        'porcentaje_anomalias': porcentaje_anomalias,
+        'modelo': modelo
+    }
